@@ -17,6 +17,24 @@ export const getUser = id => {
   })
 }
 
+export const REGISTER_USER = createAsyncAction('user/REGISTER_USER')
+export const registerUser = (body) => {
+  return apiCall({
+    endpoint: `/api/register`,
+    types: REGISTER_USER,
+    method: 'post',
+    query: body
+  })
+}
+export const AUTH_USER = createAsyncAction('user/AUTH_USER')
+export const authUser = (body, id) => {
+  return apiCall({
+    endpoint: `/api/auth`,
+    types: AUTH_USER,
+    method: 'post',
+    query: body
+  })
+}
 export const EDIT_USER = createAsyncAction('user/EDIT_USER')
 export const editUser = (body, id) => {
   return apiCall({
