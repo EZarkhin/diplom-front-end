@@ -13,18 +13,18 @@ const initialState = {
 }
 
 const handlers = {
-  [GET_TYPES.SUCCESS]: (state, { payload }) => {
+  [GET_WORKERS.SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      workers: payload
+      workers: payload 
     }
   },
-  [GET_TYPES.FAILURE]: (state, { payload }) => {
+  [GET_WORKERS.FAILURE]: (state, { payload }) => {
     return {
       ...state
     }
   },
-  [GET_TYPES.REQUEST]: state => {
+  [GET_WORKERS.REQUEST]: state => {
     return {
       ...state
     }

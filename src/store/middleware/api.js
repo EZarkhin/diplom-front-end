@@ -6,7 +6,7 @@ import forEach from 'lodash/forEach'
 import isEmpty from 'lodash/isEmpty'
 import request from 'superagent'
 
-import { API_CALL } from './constants/ids'
+import { API_CALL } from './ids'
 
 const sendMethod = HTTPMethod =>
   HTTPMethod === 'post' || HTTPMethod === 'put' || HTTPMethod === 'patch'
@@ -15,7 +15,7 @@ const sendMethod = HTTPMethod =>
 
 export const ApiService = {
   apiCall: (
-    url = process.env.REACT_APP_SERVER_URL,
+    url = process.env.REACT_APP_SERVER_URL || 'http://localhost:3000',
     endpoint = '',
     method = 'GET',
     query = {},
