@@ -15,7 +15,7 @@ class MainPage extends Component {
     return <Container> 
       <Header position="fixed" types={types} isMain/>
       <DefaultScreen><SideBar position="fixed" types={types}/></DefaultScreen>
-      <Content> Hello </Content>
+      <Content>heHello</Content>
     </Container>
   }
 }

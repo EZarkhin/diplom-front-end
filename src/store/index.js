@@ -14,11 +14,8 @@ export default ({ history }) => {
 
   const enhancer = applyMiddleware(...middleware)
 
-  if (process.env.NODE_ENV === 'development') {
-    store = createStore(rootReducer, composeWithDevTools(enhancer))
-  } else {
-    store = createStore(rootReducer)
-  }
+  store = createStore(rootReducer, composeWithDevTools(enhancer))
+  
 
   return store
 }
