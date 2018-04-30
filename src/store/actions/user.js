@@ -27,7 +27,8 @@ export const registerUser = (body) => {
   })
 }
 export const AUTH_USER = createAsyncAction('user/AUTH_USER')
-export const authUser = (body, id) => {
+export const authUser = body => {
+  console.log(body)
   return apiCall({
     endpoint: `/api/auth`,
     types: AUTH_USER,

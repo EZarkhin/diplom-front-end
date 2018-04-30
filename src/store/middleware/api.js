@@ -15,7 +15,7 @@ const sendMethod = HTTPMethod =>
 
 export const ApiService = {
   apiCall: (
-    url = process.env.REACT_APP_SERVER_URL || 'http://localhost:3000',
+    url = process.env.REACT_APP_SERVER_URL || 'https://intense-inlet-23457.herokuapp.com',
     endpoint = '',
     method = 'GET',
     query = {},

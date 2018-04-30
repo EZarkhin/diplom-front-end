@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import {} from './styles'
+import { Header, SideBar, Footer, Unit } from '../../blocks' 
+import { Container, Content } from './styles'
+import { Mobile, DefaultScreen } from '../../ui/Responsive'
 
 class MainPage extends Component {
   componentWillMount() {
@@ -9,7 +11,12 @@ class MainPage extends Component {
   }
 
   render() {
-    return <div> Hello </div>
+    const { types } = this.props.type
+    return <Container> 
+      <Header position="fixed" types={types} isMain/>
+      <DefaultScreen><SideBar position="fixed" types={types}/></DefaultScreen>
+      <Content> Hello </Content>
+    </Container>
   }
 }
 

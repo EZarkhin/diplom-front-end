@@ -10,7 +10,9 @@ import createStore from './store'
 const store = createStore({})
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
