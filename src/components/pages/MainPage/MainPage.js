@@ -5,9 +5,9 @@ import { Mobile, DefaultScreen } from '../../ui/Responsive'
 
 class MainPage extends Component {
   componentWillMount() {
-    this.props.onGetUnits().then(res => console.log(res))
-    this.props.onGetWorkers().then(res => console.log(res))
-    this.props.onGetTypes().then(res => console.log(res))
+    this.props.onGetUnits()
+    this.props.onGetWorkers()
+    this.props.onGetTypes()
   }
 
   render() {
