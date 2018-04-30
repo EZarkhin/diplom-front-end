@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
-import { Header, Sidebar, Footer, Unit } from '../../blocks' 
-
-import { Container } from './styles'
+import { Header, SideBar, Footer, Unit } from '../../blocks' 
+import { Mobile, DefaultScreen } from '../../ui/Responsive'
+import { Container, Content } from './styles'
 
 class AdminPage extends Component {
+  componentWillMount() {
+    this.props.onGetUnits()
+    this.props.onGetWorkers()
+    this.props.onGetTypes()
+  }
+
   render() {
+    const { types } = this.props.type
     return (
       <Container>
-        <Header position='fixed' />
-        Admin
+        <Header position='fixed' types={types}/>
+        <DefaultScreen><SideBar position="fixed" types={types}/></DefaultScreen>
+        <Content>Admin</Content>
       </Container>)
   }
 }

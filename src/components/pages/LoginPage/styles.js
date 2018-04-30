@@ -43,3 +43,32 @@ export const Error = Block.extend`
   color: ${colors.white};
   min-height: 60px;
 `
+
+export const ChooseButton = styled.p`
+ position: relative;
+  display: inline-block;
+  font-family: 'avenir-regular';
+  color: ${colors.black};
+  font-size: 17px;
+  ${props => props.padding && `padding: ${props.padding}`};
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px;
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid ${colors.green};
+    transform: scaleX(0);
+    width: 100%;
+    transition: transform 250ms;
+  }
+
+  &:hover {
+    &:after {
+      transform: scaleX(1);
+    }
+  }
+`

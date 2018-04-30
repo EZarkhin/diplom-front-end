@@ -11,6 +11,7 @@ export const RequireAuth  = ChildComponent => {
     render() {
       return jwt.verify(localStorage.getItem('token'), 'Cjcb;bhYsqGbcjc1[eq', (err, decode) => {
         if (err) {
+          localStorage.clear()
           return <Redirect to={login} />
         } else return <ChildComponent {...this.props} />
       })
