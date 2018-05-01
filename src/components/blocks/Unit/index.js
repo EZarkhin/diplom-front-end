@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import { Container, Title, ItemContainer, ItemTitle, Text, Site, Image, InnerContainer, Form, StyledInput, Error, ErrorText } from './styles'
+import { Formik } from 'formik'
+import { Container, Title, ItemContainer, ItemTitle, Text, Site, Image, InnerContainer, Form, StyledInput, Error, ErrorText, Submit } from './styles'
 import { Worker } from '../Worker'
 import { images, colors } from '../../../theme'
-import { Button } from '../../ui/Button'
+
 
 class Unit extends Component {
   state = {
     isOpen: false,
-    editState: false
+    edit: false,
+    sendedForm: false
   }
-  renderRegisterForm = ({
+  clickSendForm = () => this.setState({ sendedForm: true })
+  renderForm = ({
     handleChange,
     handleBlur,
     errors,
@@ -24,11 +27,22 @@ class Unit extends Component {
     return (
       <Form onSubmit={handleSubmit}>
         <ItemContainer>
-          <ItemTitle>Название</ItemTitle>
+        <ItemTitle>Название</ItemTitle>
           <StyledInput
             error={(errors.title && sendedForm) || (errors.title && touched.title)}
             name="title"
-            placeholder="Username"
+            placeholder="Название"
+            value={values.title}
+            onChange={handleChange}
+          />
+        </ItemContainer>
+        <ItemContainer>
+          <ItemTitle>Тип</ItemTitle>
+          <StyledInput
+            error={(errors.type && sendedForm) || (errors.type && touched.type)}
+            name="type"
+            placeholder="Тип"
+            value={values.type}
             onChange={handleChange}
           />
         </ItemContainer>
@@ -37,7 +51,8 @@ class Unit extends Component {
           <StyledInput
             error={(errors.director && sendedForm) || (errors.password && touched.director)}
             name="director"
-            placeholder="Password"
+            placeholder="Директор"
+            value={values.director}
             onChange={handleChange}
           />
         </ItemContainer>
@@ -46,7 +61,8 @@ class Unit extends Component {
           <StyledInput
           error={(errors.adress && sendedForm) || (errors.adress && touched.adress)}
           name="adress"
-          placeholder="adress"
+          placeholder="Адрес"
+          value={values.adress}
           onChange={handleChange}
         />
         </ItemContainer>
@@ -56,6 +72,7 @@ class Unit extends Component {
             error={(errors.site && sendedForm) || (errors.site && touched.site)}
             name="site"
             placeholder="Вэбсайт"
+            value={values.site}
             onChange={handleChange}
           />
         </ItemContainer>
@@ -65,12 +82,26 @@ class Unit extends Component {
             error={(errors.telephone && sendedForm) || (errors.telephone && touched.telephone)}
             name="telephone"
             placeholder="Телефон"
+            value={values.telephone}
             onChange={handleChange}
           />
         </ItemContainer>
-        <Button type="submit" onPress={this.clickSendForm}>
-          Register
-        </Button>
+        <ItemContainer>
+          <ItemTitle>Вышестоящее отделение</ItemTitle>
+          <StyledInput
+            error={(errors.higherUnit && sendedForm) || (errors.higherUnit && touched.higherUnit)}
+            name="higherUnit"
+            placeholder="Название отделения"
+            value={values.higherUnit}
+            onChange={handleChange}
+          />
+        </ItemContainer>
+        <Submit type="submit" onPress={this.clickSendForm}>
+          Edit
+        </Submit>
+        <Submit type="button" onPress={this.toggleEdit}>
+          Close
+        </Submit>
         <Error>
           {sendedForm &&
             !isValid && (
@@ -81,6 +112,17 @@ class Unit extends Component {
         </Error>
       </Form>
     )
+  }
+  handleSubmit = ({ title, director, adress, site, telephone, type, higherUnit }) => {
+    const { onEdit } = this.props
+    const token = localStorage.getItem('token')
+    onEdit({ title, director, adress, site, telephone, type, higherUnit, token }).then(res => {
+      if (res.error) { alert(res.payload.errMessage)}
+      else {
+      
+      this.setState({edit: false})
+      }
+    })
   }
   renderContent = () => {
     return (
@@ -106,12 +148,22 @@ class Unit extends Component {
         <Text>{this.props.unit.telephone}</Text>
       </ItemContainer>
       <Image src={this.state.isOpen ? images.closeIcon : images.openIcon } onClick={this.toggleOpen} />
+      <Image src={images.edit} onClick={this.toggleEdit} />
     </InnerContainer>
     )
   }
-
+  renderFormik = () => {
+    const { title, director, adress, site, telephone, type, higherUnit } = this.props.unit
+    const values = { title, director, adress, site, telephone, type, higherUnit }
+    return <Formik initialValues={values}
+    render={this.renderForm}
+    onSubmit={this.handleSubmit} />
+  }
   toggleOpen = () => {
     this.setState({ isOpen: !this.state.isOpen})
+  }
+  toggleEdit = () => {
+    this.setState({ edit: !this.state.edit})
   }
   renderWorkers = () => {
     console.log(this.props.workers)
@@ -122,7 +174,7 @@ class Unit extends Component {
   render() {
     return (
       <Container>
-        {this.renderContent()}
+        {this.state.edit ? this.renderFormik() : this.renderContent()}
         {this.state.isOpen && this.renderWorkers()}
       </Container>
     )

@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 import { colors, metrics } from '../../../theme'
 import { Input } from '../../ui/Input'
+import { Button } from '../../ui/Button'
 
+export const Submit = styled(Button)`
+  align-self: center;
+`
 export const Container = styled.div`
   display: flex;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -30,7 +34,7 @@ export const Form = styled.form`
   padding: 15px;
   width: 95%;
   height: 100%;
-
+  flex-wrap: wrap;
   @media only screen and (max-width: ${metrics.smallScreen}px) {
     max-width: 100%;
   }
@@ -44,7 +48,7 @@ export const InnerContainer = styled.div`
   padding: 15px;
   width: 95%;
   height: 100%;
-
+  flex-wrap: wrap;
   @media only screen and (max-width: ${metrics.smallScreen}px) {
     max-width: 100%;
   }

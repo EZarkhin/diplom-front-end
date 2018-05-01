@@ -156,7 +156,7 @@ class AdminPage extends Component {
         <Block>
           <Formik
             render={this.state.register ? this.renderRegisterForm : this.renderLoginForm}
-            validationSchema={this.state.register? registerValidationSchema : loginValidationSchema}
+            validationSchema={this.state.register ? registerValidationSchema : loginValidationSchema}
             onSubmit={this.state.register? this.handleRegisterSubmit : this.handleLoginSubmit}
           />
           <ChooseButton onClick={() => this.setState({register: !this.state.register})}>{this.state.register ? 'Войти в аккаунт' : 'Зарегистрироваться'}</ChooseButton>
