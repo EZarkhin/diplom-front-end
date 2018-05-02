@@ -36,7 +36,7 @@ class Header extends PureComponent {
             onStateChange={this.handleMenuStateChange}
           >
             {token===null ? <GoTo to='/login'>Войти</GoTo> : this.props.isMain ? <GoTo to='/admin'>Администритование</GoTo> : ''}
-            {this.renderTypeButtons()}
+            {this.props.types && this.renderTypeButtons()}
           </Menu>
         </Mobile>
       </Container>
