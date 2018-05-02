@@ -14,7 +14,8 @@ export const Container = styled.div`
   height: 100%;
 
   @media only screen and (max-width: ${metrics.smallScreen}px) {
-    max-width: 100%;
+    flex-direction: column;
+    max-width: 80%;
   }
 `
 export const ItemTitle = styled.text`
@@ -28,6 +29,9 @@ export const ItemContainer = styled.div`
   margin: 0px 5px;
   align-items: center;
   justify-content: space-between;
+  @media only screen and (max-width: ${metrics.smallScreen}px) {
+    margin: 10px 0px;
+  }
 `
 export const Title = styled.text`
   font-size: 25px;

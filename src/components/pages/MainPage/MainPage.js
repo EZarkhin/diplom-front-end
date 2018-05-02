@@ -16,7 +16,6 @@ class MainPage extends Component {
       this.props.worker.workers.map(worker => {
         if(worker.workIn===unit.title) workersArray.push(worker)
       })
-      console.log(workersArray)
       return <Unit unit={unit} workers={workersArray} key={index}/>
     })
   }
@@ -26,7 +25,6 @@ class MainPage extends Component {
       <Header position="fixed" types={types} isMain/>
       <DefaultScreen><SideBar position="fixed" types={types}/></DefaultScreen>
       <Content>{this.renderUnits()}</Content>
-     
     </Container>
   }
 }

@@ -3,7 +3,7 @@ import { createStructuredSelector } from 'reselect'
 
 import Component from './AdminPage'
 import { RequireAuth } from '../../blocks'
-import { getUnits, getUnit } from '../../../store/actions/unit'
+import { getUnits, getUnit, editUnit } from '../../../store/actions/unit'
 import { getTypes, getType } from '../../../store/actions/type'
 import { getWorker, getWorkers } from '../../../store/actions/worker'
 import { getFullUnitData } from '../../../store/selectors/unit'
@@ -23,7 +23,8 @@ const action = {
   onGetTypes: getTypes,
   onGetType: getType,
   onGetWorkers: getWorkers,
-  onGetWorker: getWorker
+  onGetWorker: getWorker,
+  onUnitEdit: editUnit
 }
 
 export default connect(selector, action)(RequireAuth(Component))

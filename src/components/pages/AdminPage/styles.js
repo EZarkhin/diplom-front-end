@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { colors, metrics } from '../../../theme'
 
 export const Container = styled.div`
-  padding-top: 90px;
+  background: linear-gradient(to right, #e7e7e7, #ffffff);
+  min-height: 100vh;
 `
 
 export const Content = styled.div`

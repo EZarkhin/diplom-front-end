@@ -114,12 +114,13 @@ class Unit extends Component {
     )
   }
   handleSubmit = ({ title, director, adress, site, telephone, type, higherUnit }) => {
-    const { onEdit } = this.props
+    const { onUnitEdit, refreshUnit, refreshWorkers } = this.props
     const token = localStorage.getItem('token')
-    onEdit({ title, director, adress, site, telephone, type, higherUnit, token }).then(res => {
+    onUnitEdit({ title, director, adress, site, telephone, type, higherUnit, token }, this.props.unit._id).then(res => {
       if (res.error) { alert(res.payload.errMessage)}
       else {
-      
+      refreshUnit()
+      refreshWorkers()
       this.setState({edit: false})
       }
     })
@@ -144,11 +145,11 @@ class Unit extends Component {
         <Site href={this.props.unit.site}>{this.props.unit.site}</Site>
       </ItemContainer>
       <ItemContainer>
-        <ItemTitle>Телефон</ItemTitle>
+        <ItemTitle>Телефон </ItemTitle>
         <Text>{this.props.unit.telephone}</Text>
       </ItemContainer>
       <Image src={this.state.isOpen ? images.closeIcon : images.openIcon } onClick={this.toggleOpen} />
-      <Image src={images.edit} onClick={this.toggleEdit} />
+      {this.props.isAdmin && <Image src={images.edit} onClick={this.toggleEdit} />}
     </InnerContainer>
     )
   }
@@ -166,7 +167,7 @@ class Unit extends Component {
     this.setState({ edit: !this.state.edit})
   }
   renderWorkers = () => {
-    console.log(this.props.workers)
+    console.log(this.props.unit._id)
     return this.props.workers.map((worker, index) => {
       return <Worker key={index} worker={worker} />
     })

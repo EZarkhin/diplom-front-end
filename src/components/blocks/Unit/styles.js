@@ -13,13 +13,13 @@ export const Container = styled.div`
   flex-grow: 1;
   align-content: center;
   justify-content: space-between;
-  margin: 10px 20px;
+  margin: 10px auto;
   padding: 15px;
   width: 95%;
   height: 100%;
 
   @media only screen and (max-width: ${metrics.smallScreen}px) {
-    max-width: 100%;
+    max-width: 80%;
   }
 `
 export const StyledInput = styled(Input)`
@@ -30,13 +30,13 @@ export const Form = styled.form`
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
-  margin: 10px 20px;
+  margin: 10px auto;
   padding: 15px;
   width: 95%;
   height: 100%;
   flex-wrap: wrap;
   @media only screen and (max-width: ${metrics.smallScreen}px) {
-    max-width: 100%;
+    max-width: 80%;
   }
 `
 export const InnerContainer = styled.div`
@@ -44,13 +44,14 @@ export const InnerContainer = styled.div`
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
-  margin: 10px 20px;
+  margin: 10px auto;
   padding: 15px;
   width: 95%;
   height: 100%;
   flex-wrap: wrap;
   @media only screen and (max-width: ${metrics.smallScreen}px) {
-    max-width: 100%;
+    max-width: 60%;
+    flex-direction: column;
   }
 `
 export const ItemTitle = styled.text`
@@ -64,6 +65,9 @@ export const ItemContainer = styled.div`
   margin: 0px 5px;
   align-items: center;
   justify-content: space-between;
+  @media only screen and (max-width: ${metrics.smallScreen}px) {
+    margin: 15px 0px;
+  }
 `
 export const Title = styled.text`
   font-size: 25px;
@@ -79,6 +83,9 @@ export const Image = styled.img`
   align-self: center;
   z-index: 10;
   cursor: pointer;
+  @media only screen and (max-width: ${metrics.smallScreen}px) {
+    margin: 15px 0px;
+  }
 `
 export const Text = styled.text`
   font-size: 18px;
