@@ -5,7 +5,6 @@ const getState = state => state.type
 export const getType = createSelector(getState, type => type.type)
 export const getTypes = createSelector(getState, type => type.types)
 
-
 export const getFullTypeData = createStructuredSelector({
   type: getType,
   types: getTypes

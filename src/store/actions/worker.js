@@ -18,7 +18,7 @@ export const getWorker = id => {
 }
 
 export const ADD_WORKERS = createAsyncAction('worker/ADD_WORKERS')
-export const addWorkers = (body) => {
+export const addWorkers = body => {
   return apiCall({
     endpoint: `/api/worker`,
     types: ADD_WORKERS,

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import { colors, metrics } from '../../../theme'
+import { Input } from '../../ui/Input'
+import { Button } from '../../ui/Button'
 
 export const Container = styled.div`
   display: flex;
@@ -51,5 +53,35 @@ export const Text = styled.text`
   font-size: 18px;
 `
 
+export const Submit = styled(Button)`
+  align-self: center;
+`
 
+export const StyledInput = styled(Input)`
+  margin: 10px 20px;
+`
+export const Form = styled.form`
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  margin: 10px auto;
+  padding: 15px;
+  width: 95%;
+  height: 100%;
+  flex-wrap: wrap;
+  @media only screen and (max-width: ${metrics.smallScreen}px) {
+    max-width: 80%;
+  }
+`
 
+export const Error = styled.div`
+  color: ${colors.white};
+  min-height: 60px;
+`
+
+export const ErrorText = styled.p`
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 17px;
+  color: ${colors.red};
+`

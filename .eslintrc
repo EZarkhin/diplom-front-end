@@ -14,7 +14,7 @@
           "callbacksLast": true
         }
       ],
-      "react/jsx-no-bind": 1,
+      "react/jsx-no-bind": 0,
       "jsx-a11y/href-no-hash": 0,
       "jsx-a11y/anchor-is-valid": [
         1,

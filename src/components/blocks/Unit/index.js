@@ -1,9 +1,22 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
-import { Container, Title, ItemContainer, ItemTitle, Text, Site, Image, InnerContainer, Form, StyledInput, Error, ErrorText, Submit } from './styles'
+import {
+  Container,
+  Title,
+  ItemContainer,
+  ItemTitle,
+  Text,
+  Site,
+  Image,
+  InnerContainer,
+  Form,
+  StyledInput,
+  Error,
+  ErrorText,
+  Submit
+} from './styles'
 import { Worker } from '../Worker'
-import { images, colors } from '../../../theme'
-
+import { images } from '../../../theme'
 
 class Unit extends Component {
   state = {
@@ -27,9 +40,11 @@ class Unit extends Component {
     return (
       <Form onSubmit={handleSubmit}>
         <ItemContainer>
-        <ItemTitle>Название</ItemTitle>
+          <ItemTitle>Название</ItemTitle>
           <StyledInput
-            error={(errors.title && sendedForm) || (errors.title && touched.title)}
+            error={
+              (errors.title && sendedForm) || (errors.title && touched.title)
+            }
             name="title"
             placeholder="Название"
             value={values.title}
@@ -49,7 +64,10 @@ class Unit extends Component {
         <ItemContainer>
           <ItemTitle>Управляет</ItemTitle>
           <StyledInput
-            error={(errors.director && sendedForm) || (errors.password && touched.director)}
+            error={
+              (errors.director && sendedForm) ||
+              (errors.password && touched.director)
+            }
             name="director"
             placeholder="Директор"
             value={values.director}
@@ -59,12 +77,14 @@ class Unit extends Component {
         <ItemContainer>
           <ItemTitle>Адрес</ItemTitle>
           <StyledInput
-          error={(errors.adress && sendedForm) || (errors.adress && touched.adress)}
-          name="adress"
-          placeholder="Адрес"
-          value={values.adress}
-          onChange={handleChange}
-        />
+            error={
+              (errors.adress && sendedForm) || (errors.adress && touched.adress)
+            }
+            name="adress"
+            placeholder="Адрес"
+            value={values.adress}
+            onChange={handleChange}
+          />
         </ItemContainer>
         <ItemContainer>
           <ItemTitle>Сайт</ItemTitle>
@@ -79,7 +99,10 @@ class Unit extends Component {
         <ItemContainer>
           <ItemTitle>Телефон</ItemTitle>
           <StyledInput
-            error={(errors.telephone && sendedForm) || (errors.telephone && touched.telephone)}
+            error={
+              (errors.telephone && sendedForm) ||
+              (errors.telephone && touched.telephone)
+            }
             name="telephone"
             placeholder="Телефон"
             value={values.telephone}
@@ -89,7 +112,10 @@ class Unit extends Component {
         <ItemContainer>
           <ItemTitle>Вышестоящее отделение</ItemTitle>
           <StyledInput
-            error={(errors.higherUnit && sendedForm) || (errors.higherUnit && touched.higherUnit)}
+            error={
+              (errors.higherUnit && sendedForm) ||
+              (errors.higherUnit && touched.higherUnit)
+            }
             name="higherUnit"
             placeholder="Название отделения"
             value={values.higherUnit}
@@ -113,63 +139,99 @@ class Unit extends Component {
       </Form>
     )
   }
-  handleSubmit = ({ title, director, adress, site, telephone, type, higherUnit }) => {
+  handleSubmit = ({
+    title,
+    director,
+    adress,
+    site,
+    telephone,
+    type,
+    higherUnit
+  }) => {
     const { onUnitEdit, refreshUnit, refreshWorkers } = this.props
     const token = localStorage.getItem('token')
-    onUnitEdit({ title, director, adress, site, telephone, type, higherUnit, token }, this.props.unit._id).then(res => {
-      if (res.error) { alert(res.payload.errMessage)}
-      else {
-      refreshUnit()
-      refreshWorkers()
-      this.setState({edit: false})
+    onUnitEdit(
+      { title, director, adress, site, telephone, type, higherUnit, token },
+      this.props.unit._id
+    ).then(res => {
+      if (res.error) {
+        alert(res.payload.errMessage)
+      } else {
+        refreshUnit()
+        refreshWorkers()
+        this.setState({ edit: false })
       }
     })
   }
   renderContent = () => {
     return (
       <InnerContainer>
-      <ItemContainer>
-        <ItemTitle>Название</ItemTitle>
-        <Title>{this.props.unit.title}</Title>
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Управляет</ItemTitle>
-        <Text>{this.props.unit.director}</Text>
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Адрес</ItemTitle>
-        <Text>{this.props.unit.adress}</Text>
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Сайт</ItemTitle>
-        <Site href={this.props.unit.site}>{this.props.unit.site}</Site>
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Телефон </ItemTitle>
-        <Text>{this.props.unit.telephone}</Text>
-      </ItemContainer>
-      <Image src={this.state.isOpen ? images.closeIcon : images.openIcon } onClick={this.toggleOpen} />
-      {this.props.isAdmin && <Image src={images.edit} onClick={this.toggleEdit} />}
-    </InnerContainer>
+        <ItemContainer>
+          <ItemTitle>Название</ItemTitle>
+          <Title>{this.props.unit.title}</Title>
+        </ItemContainer>
+        <ItemContainer>
+          <ItemTitle>Управляет</ItemTitle>
+          <Text>{this.props.unit.director}</Text>
+        </ItemContainer>
+        <ItemContainer>
+          <ItemTitle>Адрес</ItemTitle>
+          <Text>{this.props.unit.adress}</Text>
+        </ItemContainer>
+        <ItemContainer>
+          <ItemTitle>Сайт</ItemTitle>
+          <Site href={this.props.unit.site}>{this.props.unit.site}</Site>
+        </ItemContainer>
+        <ItemContainer>
+          <ItemTitle>Телефон </ItemTitle>
+          <Text>{this.props.unit.telephone}</Text>
+        </ItemContainer>
+        <Image
+          src={this.state.isOpen ? images.closeIcon : images.openIcon}
+          onClick={this.toggleOpen}
+        />
+        {this.props.isAdmin && (
+          <Image src={images.edit} onClick={this.toggleEdit} />
+        )}
+      </InnerContainer>
     )
   }
   renderFormik = () => {
-    const { title, director, adress, site, telephone, type, higherUnit } = this.props.unit
-    const values = { title, director, adress, site, telephone, type, higherUnit }
-    return <Formik initialValues={values}
-    render={this.renderForm}
-    onSubmit={this.handleSubmit} />
+    const {
+      title,
+      director,
+      adress,
+      site,
+      telephone,
+      type,
+      higherUnit
+    } = this.props.unit
+    const values = {
+      title,
+      director,
+      adress,
+      site,
+      telephone,
+      type,
+      higherUnit
+    }
+    return (
+      <Formik
+        initialValues={values}
+        render={this.renderForm}
+        onSubmit={this.handleSubmit}
+      />
+    )
   }
   toggleOpen = () => {
-    this.setState({ isOpen: !this.state.isOpen})
+    this.setState({ isOpen: !this.state.isOpen })
   }
   toggleEdit = () => {
-    this.setState({ edit: !this.state.edit})
+    this.setState({ edit: !this.state.edit })
   }
   renderWorkers = () => {
-    console.log(this.props.unit._id)
     return this.props.workers.map((worker, index) => {
-      return <Worker key={index} worker={worker} />
+      return <Worker isAdmin={this.props.isAdmin} key={index} worker={worker} />
     })
   }
   render() {

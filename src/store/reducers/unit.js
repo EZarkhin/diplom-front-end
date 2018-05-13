@@ -33,33 +33,33 @@ const handlers = {
     return {
       ...state,
       units: state.units.concat(payload),
-      unit: payload,
+      unit: payload
     }
   },
   [ADD_UNIT.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [ADD_UNIT.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   },
   [EDIT_UNIT.SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      unit: payload,
+      unit: payload
     }
   },
   [EDIT_UNIT.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [EDIT_UNIT.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   },
   [DELETE_UNIT.SUCCESS]: (state, { payload }) => {
@@ -70,28 +70,28 @@ const handlers = {
   },
   [DELETE_UNIT.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [DELETE_UNIT.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   },
   [GET_UNIT.SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      unit: payload,
+      unit: payload
     }
   },
   [GET_UNIT.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [GET_UNIT.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   }
 }

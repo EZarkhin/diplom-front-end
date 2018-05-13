@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, metrics } from '../../../theme'
+import { colors } from '../../../theme'
 import { Input } from '../../ui/Input'
 
 export const HeaderContainer = styled.div``
@@ -29,12 +29,14 @@ export const Block = styled.div`
   display: flex;
   position: ${props => (props.position ? props.position : 'relative')};
   ${props => props.background && `background: ${props.background}`};
-  ${props => props.width && `width: ${props.width}`}px;
+  ${props => props.width && `width: ${props.width}px;`};
   ${props => props.padding && `padding: ${props.padding}`};
   ${props => props.margin && `margin: ${props.margin}`};
   ${props => props.opacity && `opacity: ${props.opacity}`};
-  flex-direction: ${props => (props.flexDirection ? props.flexDirection : 'column')};
-  justify-content: ${props => (props.justifyContent ? props.justifyContent : 'center')};
+  flex-direction: ${props =>
+    props.flexDirection ? props.flexDirection : 'column'};
+  justify-content: ${props =>
+    props.justifyContent ? props.justifyContent : 'center'};
   align-items: center;
   flex-wrap: wrap;
   flex: 1;
@@ -45,7 +47,7 @@ export const Error = Block.extend`
 `
 
 export const ChooseButton = styled.p`
- position: relative;
+  position: relative;
   display: inline-block;
   font-family: 'avenir-regular';
   color: ${colors.black};

@@ -18,7 +18,7 @@ export const getType = id => {
 }
 
 export const ADD_TYPE = createAsyncAction('type/ADD_TYPE')
-export const addType = (body) => {
+export const addType = body => {
   return apiCall({
     endpoint: `/api/type`,
     types: ADD_TYPE,

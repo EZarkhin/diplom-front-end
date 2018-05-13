@@ -29,6 +29,14 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.46.3",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.8.2",
+    "prettier": "^1.12.1",
     "redux-devtools-extension": "^2.13.2"
   }
 }

@@ -49,17 +49,17 @@ const handlers = {
   [EDIT_TYPE.SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      type: payload,
+      type: payload
     }
   },
   [EDIT_TYPE.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [EDIT_TYPE.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   },
   [DELETE_TYPE.SUCCESS]: (state, { payload }) => {
@@ -70,28 +70,28 @@ const handlers = {
   },
   [DELETE_TYPE.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [DELETE_TYPE.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   },
   [GET_TYPE.SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      type: payload,
+      type: payload
     }
   },
   [GET_TYPE.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [GET_TYPE.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   }
 }

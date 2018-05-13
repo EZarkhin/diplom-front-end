@@ -1,7 +1,6 @@
-import React, {PureComponent} from 'react'
+import React, { PureComponent } from 'react'
 
-
-import { Container, Block, GoTo } from './styles';
+import { Container, GoTo } from './styles'
 
 class SideBar extends PureComponent {
   renderTypeButtons = () => {
@@ -14,11 +13,13 @@ class SideBar extends PureComponent {
       )
     })
   }
-  render(){
-    return <Container position={this.props.position}>
-      {this.renderTypeButtons()}
-    </Container>
+  render() {
+    return (
+      <Container position={this.props.position}>
+        {this.renderTypeButtons()}
+      </Container>
+    )
   }
-} 
+}
 
 export { SideBar }

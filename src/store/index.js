@@ -9,13 +9,11 @@ import api from './middleware/api'
 import rootReducer from './reducers'
 
 export default ({ history }) => {
-  let store
   const middleware = [thunk, api, router(history)]
 
   const enhancer = applyMiddleware(...middleware)
 
-  store = createStore(rootReducer, composeWithDevTools(enhancer))
-  
+  const store = createStore(rootReducer, composeWithDevTools(enhancer))
 
   return store
 }

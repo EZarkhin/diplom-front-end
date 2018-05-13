@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Header, SideBar, Footer, Unit } from '../../blocks' 
+import { Header, SideBar, Unit } from '../../blocks'
 import { Container, Content } from './styles'
-import { Mobile, DefaultScreen } from '../../ui/Responsive'
+import { DefaultScreen } from '../../ui/Responsive'
 
 class MainPage extends Component {
   componentWillMount() {
@@ -12,20 +12,24 @@ class MainPage extends Component {
 
   renderUnits = () => {
     return this.props.unit.units.map((unit, index) => {
-      const workersArray = [];
+      const workersArray = []
       this.props.worker.workers.map(worker => {
-        if(worker.workIn===unit.title) workersArray.push(worker)
+        if (worker.workIn === unit.title) workersArray.push(worker)
       })
-      return <Unit unit={unit} workers={workersArray} key={index}/>
+      return <Unit key={index} unit={unit} workers={workersArray} />
     })
   }
   render() {
     const { types } = this.props.type
-    return <Container> 
-      <Header position="fixed" types={types} isMain/>
-      <DefaultScreen><SideBar position="fixed" types={types}/></DefaultScreen>
-      <Content>{this.renderUnits()}</Content>
-    </Container>
+    return (
+      <Container>
+        <Header isMain position="fixed" types={types} />
+        <DefaultScreen>
+          <SideBar position="fixed" types={types} />
+        </DefaultScreen>
+        <Content>{this.renderUnits()}</Content>
+      </Container>
+    )
   }
 }
 

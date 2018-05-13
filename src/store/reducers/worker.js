@@ -16,7 +16,7 @@ const handlers = {
   [GET_WORKERS.SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      workers: payload 
+      workers: payload
     }
   },
   [GET_WORKERS.FAILURE]: (state, { payload }) => {
@@ -49,17 +49,17 @@ const handlers = {
   [EDIT_WORKERS.SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      worker: payload,
+      worker: payload
     }
   },
   [EDIT_WORKERS.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [EDIT_WORKERS.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   },
   [DELETE_WORKERS.SUCCESS]: (state, { payload }) => {
@@ -70,28 +70,28 @@ const handlers = {
   },
   [DELETE_WORKERS.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [DELETE_WORKERS.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   },
   [GET_WORKER.SUCCESS]: (state, { payload }) => {
     return {
       ...state,
-      worker: payload,
+      worker: payload
     }
   },
   [GET_WORKER.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [GET_WORKER.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   }
 }

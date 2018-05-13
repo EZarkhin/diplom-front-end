@@ -21,12 +21,12 @@ const handlers = {
   },
   [AUTH_USER.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [AUTH_USER.REQUEST]: state => {
     return {
-      ...state,
+      ...state
     }
   },
   [GET_USERS.SUCCESS]: (state, { payload }) => {
@@ -85,7 +85,7 @@ const handlers = {
   },
   [EDIT_USER.FAILURE]: (state, { payload }) => {
     return {
-      ...state,
+      ...state
     }
   },
   [EDIT_USER.REQUEST]: state => {

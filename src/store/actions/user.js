@@ -18,7 +18,7 @@ export const getUser = id => {
 }
 
 export const REGISTER_USER = createAsyncAction('user/REGISTER_USER')
-export const registerUser = (body) => {
+export const registerUser = body => {
   return apiCall({
     endpoint: `/api/register`,
     types: REGISTER_USER,

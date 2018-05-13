@@ -10,7 +10,6 @@ import { getFullUnitData } from '../../../store/selectors/unit'
 import { getFullTypeData } from '../../../store/selectors/type'
 import { getFullWorkerData } from '../../../store/selectors/worker'
 
-
 const selector = createStructuredSelector({
   unit: getFullUnitData,
   type: getFullTypeData,

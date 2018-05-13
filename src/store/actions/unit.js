@@ -18,7 +18,7 @@ export const getUnit = id => {
 }
 
 export const ADD_UNIT = createAsyncAction('unit/ADD_UNIT')
-export const addUnit = (body) => {
+export const addUnit = body => {
   return apiCall({
     endpoint: `/api/unit`,
     types: ADD_UNIT,

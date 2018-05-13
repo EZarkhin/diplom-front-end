@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, metrics } from '../../../theme'
+import { metrics } from '../../../theme'
 
 export const Container = styled.div`
   background: linear-gradient(to right, #e7e7e7, #ffffff);
@@ -9,7 +9,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   padding-left: 10%;
   padding-top: 80px;
-  
+
   @media only screen and (max-width: ${metrics.middleScreen}px) {
     padding-left: 10px;
   }
